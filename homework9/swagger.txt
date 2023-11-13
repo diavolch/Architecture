@@ -1,0 +1,421 @@
+openapi: 3.0.1
+info:
+  title: Получение информации о клиентах
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080/api/v1
+paths:
+  /clients:
+    get:
+      summary: Метод получения списка клиентов
+      tags: 
+        - Clients
+      operationId: getAllClients
+      responses:
+        "200":
+          description: Успешный ответ со спиcком клиентов
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Clients"
+        "404":
+          description: Данные не найдены
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "501":
+          description: Ошибка обработки данных
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"          
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Метод добавления нового клиента в список
+      tags: 
+        - Clients
+      operationId: createClient
+      requestBody:
+        required: true
+        content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Client" 
+      responses:
+        "200":
+          description: Усшный ответ добавления нового клиента
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Client"
+        "404":
+          description: Данные не найдены
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "501":
+          description: Ошибка обработки данных
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error" 
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /clients/{idClient}:
+    get:
+      summary: Метод получения клиента по id
+      tags:
+        - Clients
+      operationId: getClientId
+      parameters:
+        - name: idClient
+          in: path
+          required: true
+          description: id Client
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Усшный ответ получения клиента по id
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Client"
+        "404":
+          description: Данные не найдены
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "501":
+          description: Ошибка обработки данных
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"     
+    delete:
+      summary: Удаление клиента по id
+      tags:
+        - Clients
+      operationId: deleteClientById
+      parameters:
+        - name: idClient
+          in: path
+          required: true
+          description: id Client
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Успешное удаление клиента по id
+          content:
+            adplication/json: {}
+        "404":
+          description: Данные не найдены
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "501":
+          description: Ошибка обработки данных
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Обновление клиента по id
+      tags:
+        - Clients
+      operationId: putClientById
+      parameters:
+        - name: idClient
+          in: path
+          required: true
+          description: id Client
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Успешное изменение клиента по id
+          content:
+            adplication/json: {}
+        "404":
+          description: Данные не найдены
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "501":
+          description: Ошибка обработки данных
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error" 
+  /cloud:
+    get:
+      summary: Метод получения списка сервисов
+      tags: 
+        - Cloud
+      operationId: getProductById
+      responses:
+        "200":
+          description: Успешный ответ со списка сервисов
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Cloud"
+        "404":
+          description: Данные не найдены
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "501":
+          description: Ошибка обработки данных
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"          
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Метод добавления нового сервиса в список
+      tags: 
+        - Cloud
+      operationId: createCloud
+      requestBody:
+        required: true
+        content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Cloud" 
+      responses:
+        "200":
+          description: Усшный ответ добавления нового сервиса
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Cloud"
+        "404":
+          description: Данные не найдены
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "501":
+          description: Ошибка обработки данных
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error" 
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /cloud/{idCloud}:
+    get:
+      summary: Метод получения сервиса по id
+      tags:
+        - Cloud
+      operationId: getCloudId
+      parameters:
+        - name: idCloud
+          in: path
+          required: true
+          description: id Cloud
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Усшный ответ получения сервиса по id
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Cloud"
+        "404":
+          description: Данные не найдены
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "501":
+          description: Ошибка обработки данных
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"     
+    delete:
+      summary: Удаление клиента по id
+      tags:
+        - Cloud
+      operationId: deleteCloudById
+      parameters:
+        - name: idCloud
+          in: path
+          required: true
+          description: id Cloud
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Успешное удаление сервиса по id
+          content:
+            adplication/json: {}
+        "404":
+          description: Данные не найдены
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "501":
+          description: Ошибка обработки данных
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Обновление сервиса по id
+      tags:
+        - Cloud
+      operationId: putClщгвById
+      parameters:
+        - name: idCloud
+          in: path
+          required: true
+          description: id Cloud
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Успешное изменение сервиса по id
+          content:
+            adplication/json: {}
+        "404":
+          description: Данные не найдены
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "501":
+          description: Ошибка обработки данных
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "default":
+          description: Всё остальное
+          content:
+            adplication/json:
+              schema:
+                $ref: "#/components/schemas/Error" 
+    
+components:
+  schemas:
+    Client:
+      type: object
+      required:
+        - idClient
+        - name
+      properties:
+        idClient:
+          type: integer 
+          example: 1
+          description: Id клиента
+        name:
+          type: string
+          example: Кирилл
+          description: Имя клиента
+    Clients:
+      type: array
+      items:
+        $ref: "#/components/schemas/Client"
+    Error:
+      type: object
+      required:
+        - codeError
+        - messageError
+      properties:
+        codeError:
+          type: string
+          example: 123f456
+          description: Код ошибки
+        messageError:
+          type: string
+          example: error
+          description: Сообщение ошибки
+    Cloud:
+      type: object
+      required:
+        - OS
+        - RAM
+        - CPU
+        - SSD
+        - idClient
+      properties:
+        OS:
+          type: string
+          enum:
+            - Windows
+            - Linux
+        RAM:
+          type: integer
+          example: 256
+          description: Количество оперативной памяти
+        CPU:
+          type: integer
+          example: 8
+          description: Количество ядер процессора 
+        SSD:
+          type: integer
+          example: 1024
+          description: Количетсво ssd памяти
+        idClient:
+          type: integer
+          example: 1
